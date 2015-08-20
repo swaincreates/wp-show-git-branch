@@ -2,10 +2,10 @@
 /*
  * Plugin Name: Show Git Branch
  * Version: 1.0
- * Plugin URI: http://#
+ * Plugin URI: https://github.com/swaincreates/wp-show-git-branch
  * Description: Add a git branch indicator to the toolbar.
  * Author: swaincreates
- * Author URI: http://github.com/swaincreates
+ * Author URI: https://github.com/swaincreates
  * Requires at least: 3.8
  * Tested up to: 3.8
  *

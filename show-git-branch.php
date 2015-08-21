@@ -36,7 +36,7 @@ function show_git_branch( $wp_admin_bar ){
             $stringfromfile = file( $root_path );
             $branchname = implode('/', array_slice( explode('/', file_get_contents( $root_path) ), 2) );
     	} else {
-    		$branchname	= "No git detected.";
+    		$branchname	= "No git detected";
     	}
 
 		

@@ -21,35 +21,35 @@ function show_git_branch( $wp_admin_bar ){
         //get_home_path requires following file.. may mess up if wp is in another directory?
         require_once( ABSPATH . 'wp-admin/includes/file.php' );
 
-        //get root path from WP dir
-        $root_path = get_home_path() . '.git/HEAD';
-        
-        //get root path from active WP Theme, even if child theme
-        $theme_path = get_stylesheet_directory() . '/.git/HEAD';
-        
-        //get the content path
-        $content_path = WP_CONTENT_DIR . '/.git/HEAD';
+    	//get root path from WP dir
+    	$root_path = get_home_path() . '.git/HEAD';
+    	
+    	//get root path from active WP Theme, even if child theme
+    	$theme_path = get_stylesheet_directory() . '/.git/HEAD';
 
+    	//get the content path
+        $content_path = WP_CONTENT_DIR . '/.git/HEAD';
+    	
         //get branch name
-        if ( file_exists( $theme_path )) {
-            $stringfromfile = file( $theme_path );
-            $branchname = implode('/', array_slice( explode('/', file_get_contents($theme_path) ), 2) );
+    	if ( file_exists( $theme_path )) {
+    		$stringfromfile = file( $theme_path );
+    		$branchname = implode('/', array_slice( explode('/', file_get_contents($theme_path) ), 2) );
         } elseif ( file_exists( $root_path ) ) {
             $stringfromfile = file( $root_path );
             $branchname = implode('/', array_slice( explode('/', file_get_contents( $root_path) ), 2) );
         } elseif ( file_exists( $content_path ) ) {
             $stringfromfile = file( $content_path );
             $branchname = implode('/', array_slice( explode('/', file_get_contents( $content_path) ), 2) );
-        } else {
-            $branchname = "No git detected";
-        }
+    	} else {
+    		$branchname	= "No git detected";
+    	}
 
-        
-        $args = array(
-                            "id" => "show-git-branch",
-                            "title" => "$branchname"
-                        );
-    $wp_admin_bar->add_node( $args );
+		
+		$args = array(
+							"id" => "show-git-branch",
+							"title" => "$branchname"
+						);
+	$wp_admin_bar->add_node( $args );
 }
 add_action( 'admin_bar_menu', 'show_git_branch', 999 );
 

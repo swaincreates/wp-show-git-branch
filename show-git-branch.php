@@ -26,7 +26,9 @@ function show_git_branch( $wp_admin_bar ){
     	
     	//get root path from active WP Theme, even if child theme
     	$theme_path = get_stylesheet_directory() . '/.git/HEAD';
-    	
+
+    	//get the content path
+        $content_path = WP_CONTENT_DIR . '/.git/HEAD';
     	
         //get branch name
     	if ( file_exists( $theme_path )) {
@@ -35,6 +37,9 @@ function show_git_branch( $wp_admin_bar ){
         } elseif ( file_exists( $root_path ) ) {
             $stringfromfile = file( $root_path );
             $branchname = implode('/', array_slice( explode('/', file_get_contents( $root_path) ), 2) );
+        } elseif ( file_exists( $content_path ) ) {
+            $stringfromfile = file( $content_path );
+            $branchname = implode('/', array_slice( explode('/', file_get_contents( $content_path) ), 2) );
     	} else {
     		$branchname	= "No git detected";
     	}
